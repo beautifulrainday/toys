@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link ref="stylesheet" type="text/css" href="/css/"/>
+    <script type="text/javascript" src="/jquery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+hello world !!!
+</body>
+<br>
+<p th:text="${test}"></p>
+<button class="btn1" onclick="testAjax()">发送！</button>
+</body>
+<script>
+    function testAjax() {
+        var categoryId = 3;
+        var uid = '1a9e9d44852d4824bcdd7d88d1846dc7';
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            //data: JSON.stringify(a),
+            //url: "http://106.13.162.229:8081/test",
+            url: 'https://www.my51share.com/blueSea/getDistinctArticle?categoryId=' + categoryId + '&uid=' + uid,
+            success: function (data) {
+                console.log(JSON.stringify(data));
+            },
+            error: function (e) {
+                alert(e.responseText);
+                console.log(e.responseText);
+            }
+        })
+    }
+</script>
+</html>
